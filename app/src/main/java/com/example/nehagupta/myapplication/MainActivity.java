@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     /*buttonsubtract,buttonmultiply,buttondivide*/buttonequals,buttonclear,buttonsubtract,buttonmultiply,buttondivide;
     EditText editText;
     float value1, value2;
+    String val2 = "";
     boolean addition,subtraction,multiplication,division;
 
     @Override
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                   editText.setText(editText.getText() + "0");
+                  if (addition || subtraction || multiplication || division) {
+                      val2+="0";
+                  }
 
             }
         });
@@ -58,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "1");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="1";
+                }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "2");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="2";
+                }
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "3");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="3";
+                }
             }
         });
 
@@ -80,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "4");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="4";
+                }
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "5");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="5";
+                }
             }
         });
         button6.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "6");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="6";
+                }
             }
         });
         button7.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "7");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="7";
+                }
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "8");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="8";
+                }
             }
         });
         button9.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 editText.setText(editText.getText() + "9");
+                if (addition || subtraction || multiplication || division) {
+                    val2+="9";
+                }
             }
         });
         buttonadd.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 value1 = Float.parseFloat(editText.getText() + "");
 
                 addition = true;
-                editText.setText(null);
+                editText.setText(editText.getText() + " + ");
             }
 
         });
@@ -134,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
                 value1 = Float.parseFloat(editText.getText() + "");
                 subtraction = true;
-                editText.setText(null);
+                editText.setText(editText.getText() + " - ");
             }
 
         });
@@ -145,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 value1 = Float.parseFloat(editText.getText() + "");
 
                 multiplication = true;
-                editText.setText(null);
+                editText.setText(editText.getText() + " x ");
             }
 
         });
@@ -155,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
                 value1 = Float.parseFloat(editText.getText() + "");
                 division=true;
-                editText.setText(null);
+                editText.setText(editText.getText() + " / ");
             }
 
         });
@@ -163,32 +194,38 @@ public class MainActivity extends AppCompatActivity {
         buttonequals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                value2 = Float.parseFloat(editText.getText() + "");
+                value2 = Float.parseFloat(val2);
                 if (addition) {
-                    editText.setText(value1 + value2 + "");
+                    Float result = value1 + value2;
+                    editText.setText(editText.getText() + " = "+ result + "");
                     addition = false;
                 }
                 else if(subtraction)
                 {
-                    editText.setText((value1 - value2) + "");
+                    Float result = value1 - value2;
+                    editText.setText(editText.getText() + " = " + result + "");
                     subtraction = false;
                 }
                 else if(multiplication)
                 {
-                    editText.setText(value1 * value2 + "");
+                    Float result = value1 * value2;
+                    editText.setText(editText.getText() + " = " +  result + "");
                     multiplication = false;
                 }
                 else if(division)
                 {
-                    editText.setText(value1 / value2 +"");
+                    Float result = value1 / value2;
+                    editText.setText(editText.getText() + " = " +  result +"");
                     division = false;
                 }
+                val2 = "";
             }
         });
         buttonclear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editText.setText("");
+                val2 = "";
             }
         });
 
